@@ -215,7 +215,7 @@ static int detection_init()
                 DEBUG_LOG(
                     "Incompatible string containing cgroup and cpuset: %s", p);
             }
-        } else if (strstr(p, "cpu,cpuacct") != NULL) {
+        } else if (strstr(p, "cpu,cpuacct") != NULL || strstr(p, "cpuacct,cpu") != NULL) {
             int matched = sscanf(p, "%d %d %d:%d %s %s", &mountid, &parentid,
                                  &major, &minor, tmproot, tmpmount);
             if (matched == 6) {
@@ -271,7 +271,7 @@ static int detection_init()
         if (controller != NULL) {
             if (strstr(controller, "cpuset") != NULL) {
                 set_subsystem_path(&cpuset_subsystem, base);
-            } else if (strstr(controller, "cpu,cpuacct") != NULL) {
+            } else if (strstr(controller, "cpu,cpuacct") != NULL || strstr(controller, "cpuacct,cpu") != NULL) {
                 set_subsystem_path(&cpu_subsystem, base);
             } else if (strstr(controller, "cpuacct") != NULL) {
                 /*

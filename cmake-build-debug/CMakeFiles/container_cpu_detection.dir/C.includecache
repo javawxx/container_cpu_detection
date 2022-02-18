@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/wxx/Project/c/container_cpu_detection/detection.c
+dlfcn.h
+-
+errno.h
+-
+libgen.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+sys/types.h
+-
+unistd.h
+-
+
+/Users/wxx/Project/c/container_cpu_detection/sysconf_test.c
+stdio.h
+-
+unistd.h
+-
+
