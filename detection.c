@@ -461,9 +461,9 @@ long sysconf(int name)
     DEBUG_LOG("cpuset: %d, shares: %d, quota: %d, period: %d\n", cpuset_count,
               shares, quota, period);
 
-    if (shares == PER_CPU_SHARES) {
-        shares = -1;
-    }
+//    if (shares == PER_CPU_SHARES) {
+//        shares = -1;
+//    }
 
     if (quota > -1 && period > 0) {
         quota_count = ceilf((float)quota / (float)period);
