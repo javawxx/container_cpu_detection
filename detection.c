@@ -415,11 +415,7 @@ long sysconf(int name)
     int cpu_count, limit_count;
 
     DEBUG_LOG("Detection: sysconf is called.");
-//    if (!detection_open || name != _SC_NPROCESSORS_ONLN) {
-//        return orig_sysconf(name);
-//    }
-
-    if (name != _SC_NPROCESSORS_ONLN) {
+    if (!detection_open || name != _SC_NPROCESSORS_ONLN) {
         return orig_sysconf(name);
     }
 
@@ -486,4 +482,11 @@ long sysconf(int name)
     }
 
     return DETECTION_MIN(cpu_count, limit_count);
+}
+
+int main()
+{
+    printf("_SC_NPROCESSORS_ONLN = %ld\n", sysconf(_SC_NPROCESSORS_ONLN));
+
+    return 0;
 }
