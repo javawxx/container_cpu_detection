@@ -415,7 +415,11 @@ long sysconf(int name)
     int cpu_count, limit_count;
 
     DEBUG_LOG("Detection: sysconf is called.");
-    if (!detection_open || name != _SC_NPROCESSORS_ONLN) {
+//    if (!detection_open || name != _SC_NPROCESSORS_ONLN) {
+//        return orig_sysconf(name);
+//    }
+
+    if (name != _SC_NPROCESSORS_ONLN) {
         return orig_sysconf(name);
     }
 
