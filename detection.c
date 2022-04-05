@@ -25,6 +25,7 @@
     subsystem_info.len  = strlen(value);
 
 #define DETECTION_MIN(val1, val2) ((val1 > val2) ? (val2) : (val1))
+#define DETECTION_MAX(val1, val2) ((val1 > val2) ? (val1) : (val2))
 
 #ifdef INJECT_DEBUG
 #define DEBUG_LOG(...)                                                         \
@@ -474,7 +475,7 @@ long sysconf(int name)
     }
 
     if (quota_count != 0 && share_count != 0) {
-        limit_count = DETECTION_MIN(quota_count, share_count);
+        limit_count = DETECTION_MAX(quota_count, share_count);
     } else if (quota_count != 0) {
         limit_count = quota_count;
     } else if (share_count != 0) {
